@@ -1,0 +1,30 @@
+@-webkit-keyframes moveclouds {
+  0% {
+    margin-left: 1000px; }
+
+  100% {
+    margin-left: -1000px; } }
+@-moz-keyframes moveclouds {
+  0% {
+    margin-left: 1000px; }
+
+  100% {
+    margin-left: -1000px; } }
+@-ms-keyframes moveclouds {
+  0% {
+    margin-left: 1000px; }
+
+  100% {
+    margin-left: -1000px; } }
+@-o-keyframes moveclouds {
+  0% {
+    margin-left: 1000px; }
+
+  100% {
+    margin-left: -1000px; } }
+@keyframes moveclouds {
+  0% {
+    margin-left: 1000px; }
+
+  100% {
+    margin-left: -1000px; } }
