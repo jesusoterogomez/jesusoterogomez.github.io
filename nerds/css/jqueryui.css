@@ -1,0 +1,34 @@
+ .ui-spinner{
+ 	position: relative;
+
+ }
+ .spinner{
+ 	outline:none;
+	font: 11pt 'Lato', sans-serif;
+	font-weight: 700;
+	color: #666;
+	padding: 6px 8px;
+	border-radius: 4px;
+	width: 200px;
+	border:2px #DDDDDD solid;
+ }
+
+ .ui-spinner a{
+	color:#be1e2d;
+}
+
+.ui-spinner a:hover{
+	color:#8e1922;
+}
+.ui-spinner a:active{
+	color:#c64353;
+}
+ 
+
+.ui-spinner-up{position: absolute; cursor: pointer;
+right:7px; top:-4px; font-size: 10pt;}
+.ui-spinner-down{position: absolute;cursor: pointer;
+right:7px; bottom:-4px; font-size: 10pt;}
+ .spinner:focus{
+   border:2px #378FCD solid;
+}
