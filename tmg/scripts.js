@@ -16,7 +16,7 @@ function initCalendar (options) {
 
   var template = '<div class="wrapper">'+
     '<div class="cal">'+
-      '<div class="month">Month 0000</div>'+
+      '<div class="month">March 2015</div>'+
       '<div class="labels"></div>'+
       '<div class="days"></div>'+
     '</div>'+
