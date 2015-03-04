@@ -1,0 +1,124 @@
+::-webkit-scrollbar { 
+    display: none; 
+}
+.date{
+  padding:10px 15px;
+  border-radius:4px;
+  outline:0;
+  border:1px solid #ccc;
+}
+.month{
+  height:36px;
+  line-height:36px;
+  margin:0 auto;
+  text-align:center;
+  
+  /*Subtle Border Washout Effect on Weekday Labels*/
+  box-shadow:0px 15px 15px #FFF; 
+  position:relative;
+  z-index:100;
+}
+.cal{
+  width:auto;
+  box-sizing:border-box;
+  width: 36px * 7;
+  height: 36px * 8;
+  background:#fff;
+    font-size:10.5pt;
+  font-family:sans-serif;
+  font-weight:700;
+}
+.days{
+  position: relative;
+}
+.days a{
+  position:relative;
+  display:inline-block;
+  box-sizing:border-box;
+  border-right:1px solid #ddd;
+  border-bottom:1px solid #ddd;
+  text-align: center;
+  height:36px;
+  width: 36px;
+  line-height: 36px;
+  color:#444;
+}
+.days a:hover{
+  background:#D1BDD8;
+  cursor:pointer;
+}
+.monthlabel{
+  color:#FFF;
+  display:block;
+  position:absolute;
+  width: 8px;
+  height: 100%;
+  padding:0 1px;
+  margin: 0;
+  background:#666;
+  /* opacity:0.3; */
+  font-size: 6pt;
+ 
+  text-transform: uppercase;
+  line-height:8px;
+}
+.monthlabel span{
+  position:relative;
+  word-wrap:break-word;
+  height:36px;
+  position:relative;
+  top:6px;
+  font-weight: 700;
+}
+.labels a{
+  height: 36px;
+  line-height: 36px;
+  border-right:1px solid #ddd;
+  box-shadow:0px -15px 15px -10px rgba(0,0,0,0.1) inset;
+  box-sizing:border-box;
+  position:relative;
+  display:inline-block;
+  /* width:(100%/7); */
+  width: 36px;
+  text-align: center;
+  background:#FFF;
+  color:#222;
+  
+}
+.labels a:last-child{
+  border-right:none;
+}
+
+.days a.disabled{
+  color:rgba(0,0,0,0.2);
+  pointer-events:none;
+}
+.days a.today{
+  background:#421E4E;
+  color:#FFF;
+}
+.cal{
+  box-shadow:0px 0px 1px 1px #eee;
+
+}
+
+.wrapper{
+    padding:10px;
+    background:#FFF;
+    // display: inline-block;
+    display: none;
+    box-sizing:border-box;
+    box-shadow:0px 0px 5px #333;
+    position:absolute;
+    margin:5px;
+}
+.days a:nth-child(7n){
+  border-right:none;
+  /* background:#000; */
+}
+.days{
+  position:relative;
+    height: 36px * 6;
+    overflow:scroll;
+
+}
