@@ -119,6 +119,8 @@ $(document).on('click', '.days a',  function (e) {
 
 $(document).on('click', '.date',  function (e) {
 	e.preventDefault();
+  $('.wrapper').fadeOut();
+  
   $(this).siblings('.wrapper').fadeIn().css('display','inline-block');
 });
 
