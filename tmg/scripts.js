@@ -10,6 +10,7 @@ initCalendar({
   id:'date2'
 });
 
+
 function initCalendar (options) {
 
   $('.date').wrap('<div class="calendarWrapper"></div>');
@@ -23,11 +24,12 @@ function initCalendar (options) {
   '</div>';
 
   $('.date').after(template);
+  
+  $('.days').on('scroll', function () {
+    console.log('scroll');
+	});
+
 }
-
-
-
-
 
 
 
