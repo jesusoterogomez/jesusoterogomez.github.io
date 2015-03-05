@@ -10,6 +10,7 @@ initCalendar({
   id:'date2'
 });
 
+
 function initCalendar (options) {
 
   $('.date').wrap('<div class="calendarWrapper"></div>');
@@ -23,17 +24,34 @@ function initCalendar (options) {
   '</div>';
 
   $('.date').after(template);
+  
+  $('.days').on('scroll', function () {
+    var lbls = $(this).find('.monthlabel').parent();
+    var pM = $(this).siblings('.month');
+    $.each(lbls, function( index, data ) {
+      var top = $(data).position().top;
+      var targetOffset = $(data).height()*weeksBehind;
+
+      if(top <= targetOffset ){
+                var y = new Date( $(data).last().data('date') );
+                var m = $(data).last().data('month');
+                $(pM).html(m+' '+y.getFullYear());
+      }
+    });
+  });
+
 }
 
 
 
 
+  //
 
-
-
-
-
-var initdate = '2015-3-3';
+var initdate = new Date();
+initdate.setHours(0);
+initdate.setMinutes(0);
+initdate.setSeconds(0);
+initdate.setMilliseconds(0);
 var daysAhead = 180;
 var holidays = [];
 var calendar = [];
@@ -70,7 +88,6 @@ $.each(dayNames, function( index, data ) {
 for (var i = 0; i < daysAhead ; i++) {
 
   var date = new Date(initdate);
-  
   var tempDate = new Date(date.setDate(date.getDate() + i));
   var enabled = tempDate.getDay() == 0 || tempDate.getDay() == 6 ? 'disabled' : 'enabled';
   
@@ -101,7 +118,7 @@ for (var i = startDay; i < offset + weeksBehind*7 ; i++) {
 }
 
 $(document).on('click', '.days a',  function (e) {
-	e.preventDefault();
+  e.preventDefault();
   $('.days a').removeClass('today');
   $(this).addClass('today');
   var selectedDate = new Date($(this).data('date'));
@@ -118,7 +135,7 @@ $(document).on('click', '.days a',  function (e) {
 });
 
 $(document).on('click', '.date',  function (e) {
-	e.preventDefault();
+  e.preventDefault();
   $('.wrapper').fadeOut();
   
   $(this).siblings('.wrapper').fadeIn().css('display','inline-block');
@@ -132,7 +149,7 @@ $.each(calendar, function( index, data ) {
    $('.cal .days').append('<a data-date="'+data.date+'" class="'+data.enabled+' '+isToday+'">'+data.day+'</a>');
  }
  else{
-   $('.cal .days').append('<a data-date="'+data.date+'" class="'+data.enabled+' '+isToday+'"><span 	  class="monthlabel"><span>'+monthNames[data.date.getMonth().toString()].substring(0,3)+'</span></span>'+data.day+'</a>');
+   $('.cal .days').append('<a data-date="'+data.date+'"  data-month="'+monthNames[data.date.getMonth().toString()]+'" class="'+data.enabled+' '+isToday+'"><span class="monthlabel"><span>'+monthNames[data.date.getMonth().toString()].substring(0,3)+'</span></span>'+data.day+'</a>');
  }
 
 });

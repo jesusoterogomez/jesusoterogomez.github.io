@@ -1,5 +1,9 @@
+$cellSize:36px;
+$highlightColor:#421E4E;
+$hoverColor:#D1BDD8;
+
 ::-webkit-scrollbar { 
-    display: none; 
+  display: none; 
 }
 .date{
   padding:10px 15px;
@@ -24,7 +28,7 @@
   width: 36px * 7;
   height: 36px * 8;
   background:#fff;
-    font-size:10.5pt;
+  font-size:10.5pt;
   font-family:sans-serif;
   font-weight:700;
 }
@@ -44,7 +48,7 @@
   color:#444;
 }
 .days a:hover{
-  background:#D1BDD8;
+  background:$hoverColor;
   cursor:pointer;
 }
 .monthlabel{
@@ -58,7 +62,7 @@
   background:#666;
   /* opacity:0.3; */
   font-size: 6pt;
- 
+  
   text-transform: uppercase;
   line-height:8px;
 }
@@ -94,31 +98,61 @@
   pointer-events:none;
 }
 .days a.today{
-  background:#421E4E;
+  background:$highlightColor;
   color:#FFF;
 }
 .cal{
   box-shadow:0px 0px 1px 1px #eee;
-
 }
 
 .wrapper{
-    padding:10px;
-    background:#FFF;
-    // display: inline-block;
-    display: none;
-    box-sizing:border-box;
-    box-shadow:0px 0px 5px #333;
-    position:absolute;
-    margin:5px;
+  padding:15px;
+  border-radius: 4px;
+  background:#FFF;
+  display: none;
+  box-sizing:border-box;
+  box-shadow:0px 0px 5px #333;
+  position:absolute;
+  margin:5px;
+  margin-top: -50px;
 }
 .days a:nth-child(7n){
   border-right:none;
-  /* background:#000; */
 }
 .days{
   position:relative;
-    height: 36px * 6;
-    overflow:scroll;
+  height: 36px * 6;
+  overflow:scroll;
 
+}
+
+
+
+
+//SITE 
+
+body{
+  background:$highlightColor;
+  text-align: center;
+  font:10pt 'Lato', sans-serif;
+}
+.intro{
+  font-size: 12pt;
+  color:#FFF;
+  padding:20px 0;
+}
+label{
+  color:#FFF;
+  display: block;
+  font-size: 12pt;
+  padding: 20px 0;
+  padding-bottom: 5px;
+}
+.date{
+  color:#FFF;
+  border:3px solid #FFF;
+  background: transparent;
+  font:10pt 'Lato', sans-serif;
+  text-transform: uppercase;
+  width: 200px;
 }
