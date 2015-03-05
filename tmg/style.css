@@ -8,10 +8,11 @@
   border: 1px solid #ccc; }
 
 .month {
-  height: 36px;
-  line-height: 36px;
+  height: 34px;
+  line-height: 34px;
   margin: 0 auto;
   text-align: center;
+  color: #222;
   /*Subtle Border Washout Effect on Weekday Labels*/
   box-shadow: 0px 15px 15px #FFF;
   position: relative;
@@ -20,8 +21,8 @@
 .cal {
   width: auto;
   box-sizing: border-box;
-  width: 252px;
-  height: 288px;
+  width: 238px;
+  height: 272px;
   background: #fff;
   font-size: 10.5pt;
   font-family: sans-serif;
@@ -37,9 +38,9 @@
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   text-align: center;
-  height: 36px;
-  width: 36px;
-  line-height: 36px;
+  height: 34px;
+  width: 34px;
+  line-height: 34px;
   color: #444; }
 
 .days a:hover {
@@ -63,21 +64,21 @@
 .monthlabel span {
   position: relative;
   word-wrap: break-word;
-  height: 36px;
+  height: 34px;
   position: relative;
   top: 6px;
   font-weight: 700; }
 
 .labels a {
-  height: 36px;
-  line-height: 36px;
+  height: 34px;
+  line-height: 34px;
   border-right: 1px solid #ddd;
   box-shadow: 0px -15px 15px -10px rgba(0, 0, 0, 0.1) inset;
   box-sizing: border-box;
   position: relative;
   display: inline-block;
   /* width:(100%/7); */
-  width: 36px;
+  width: 34px;
   text-align: center;
   background: #FFF;
   color: #222; }
@@ -112,18 +113,47 @@
 
 .days {
   position: relative;
-  height: 216px;
+  height: 204px;
   overflow: scroll; }
 
 body {
   background: #421E4E;
   text-align: center;
+  padding-top: 50px;
+  color: #FFF;
   font: 10pt 'Lato', sans-serif; }
 
 .intro {
   font-size: 12pt;
   color: #FFF;
+  width: 45%;
+  margin: 0 auto;
+  padding: 20px; }
+  .intro h1 {
+    padding: 20px;
+    font-size: 2em; }
+  .intro h2 {
+    padding: 10px; }
+
+.assessment {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 45%;
+  margin: 0px auto;
   padding: 20px 0; }
+
+.outro {
+  font-size: 12pt;
+  color: #FFF;
+  width: 45%;
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 80px; }
+  .outro h1 {
+    padding: 20px;
+    font-size: 2em; }
+  .outro h2 {
+    padding: 10px; }
 
 label {
   color: #FFF;
