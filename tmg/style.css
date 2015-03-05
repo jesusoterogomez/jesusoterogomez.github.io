@@ -29,7 +29,8 @@
   font-weight: 700; }
 
 .days {
-  position: relative; }
+  position: relative;
+  text-align: left; }
 
 .days a {
   position: relative;
@@ -119,14 +120,14 @@
 body {
   background: #421E4E;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 0px;
   color: #FFF;
   font: 10pt 'Lato', sans-serif; }
 
 .intro {
   font-size: 12pt;
   color: #FFF;
-  width: 45%;
+  width: 60%;
   margin: 0 auto;
   padding: 20px; }
   .intro h1 {
@@ -138,14 +139,14 @@ body {
 .assessment {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  width: 45%;
+  width: 60%;
   margin: 0px auto;
   padding: 20px 0; }
 
 .outro {
   font-size: 12pt;
   color: #FFF;
-  width: 45%;
+  width: 60%;
   margin: 0 auto;
   padding: 20px;
   padding-bottom: 80px; }
