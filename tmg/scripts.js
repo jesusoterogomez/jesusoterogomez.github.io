@@ -1,6 +1,7 @@
 
+var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-
+var initdate = new Date();
 
 initCalendar({
   id:'date1'
@@ -17,13 +18,16 @@ function initCalendar (options) {
 
   var template = '<div class="wrapper">'+
     '<div class="cal">'+
-      '<div class="month">March 2015</div>'+
+      '<div class="month"></div>'+
       '<div class="labels"></div>'+
       '<div class="days"></div>'+
     '</div>'+
   '</div>';
-
+  
   $('.date').after(template);
+  var d = initdate.getFullYear();
+  var m = initdate.getMonth();
+  $('.wrapper').find('.month').html( monthNames[m]+' '+d );
   
   $('.days').on('scroll', function () {
     var lbls = $(this).find('.monthlabel').parent();
@@ -45,9 +49,6 @@ function initCalendar (options) {
 
 
 
-  //
-
-var initdate = new Date();
 initdate.setHours(0);
 initdate.setMinutes(0);
 initdate.setSeconds(0);
@@ -76,8 +77,6 @@ var dayNames = [
 for (var i = 0; i < startDay ; i++) {
   dayNames.push(dayNames.shift());
 }
-
-var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 //set day labels;
 $.each(dayNames, function( index, data ) {
@@ -117,9 +116,13 @@ for (var i = startDay; i < offset + weeksBehind*7 ; i++) {
   });
 }
 
-$(document).on('click', '.days a',  function (e) {
+$(document).on('click', function (e){
+  $('.wrapper').fadeOut();
+});
+
+$(document).on('click', '.days a',  function (e) {  
   e.preventDefault();
-  $('.days a').removeClass('today');
+  $(this).siblings().removeClass('today');
   $(this).addClass('today');
   var selectedDate = new Date($(this).data('date'));
   var result = {
@@ -135,11 +138,12 @@ $(document).on('click', '.days a',  function (e) {
 });
 
 $(document).on('click', '.date',  function (e) {
+  e.stopPropagation();
   e.preventDefault();
-  $('.wrapper').fadeOut();
-  
-  $(this).siblings('.wrapper').fadeIn().css('display','inline-block');
+  //$('.wrapper').fadeOut();
+  $(this).siblings('.wrapper').fadeToggle().css('display','inline-block');
 });
+
 
 
 $.each(calendar, function( index, data ) {
