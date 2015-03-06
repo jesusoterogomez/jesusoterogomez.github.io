@@ -7,16 +7,24 @@ initCalendar({
   id:'date1'
 });
 
-initCalendar({
-  id:'date2'
-});
+// initCalendar({
+//   id:'date2'
+// });
 
+
+$(document).on('click', '.datepicker',  function (e) {
+  $(this).blur();
+  e.stopPropagation();
+  e.preventDefault();
+  $(this).siblings('.calendar').fadeToggle();
+
+});
 
 function initCalendar (options) {
 
-  $('.date').wrap('<div class="calendarWrapper"></div>');
+  $('.datepicker').wrap('<div class="calendarWrapper">');
 
-  var template = '<div class="wrapper">'+
+  var template = '<div class="calendar">'+
     '<div class="cal">'+
       '<div class="month"></div>'+
       '<div class="labels"></div>'+
@@ -24,10 +32,11 @@ function initCalendar (options) {
     '</div>'+
   '</div>';
   
-  $('.date').after(template);
+  $('.datepicker').after(template);
+
   var d = initdate.getFullYear();
   var m = initdate.getMonth();
-  $('.wrapper').find('.month').html( monthNames[m]+' '+d );
+  $('.calendar').find('.month').html( monthNames[m]+' '+d );
   
   $('.days').on('scroll', function () {
     var lbls = $(this).find('.monthlabel').parent();
@@ -117,7 +126,7 @@ for (var i = startDay; i < offset + weeksBehind*7 ; i++) {
 }
 
 $(document).on('click', function (e){
-  $('.wrapper').fadeOut();
+  $('.calendar').fadeOut();
 });
 
 $(document).on('click', '.days a',  function (e) {  
@@ -130,19 +139,14 @@ $(document).on('click', '.days a',  function (e) {
     month: (selectedDate.getMonth()+'').length == 1 ? '0'+selectedDate.getMonth() : selectedDate.getMonth() ,
     year: selectedDate.getFullYear()
   }
-  $(this).parents('.wrapper').siblings('.date').val( result.day+'-'+result.month+'-'+result.year);
+  $(this).parents('.calendar').siblings('.datepicker').val( result.day+'-'+result.month+'-'+result.year);
 
-  // $('.date').val( );
+  // $('.datepicker').val( );
   //$('.result').append(selectedDate);
-  $('.wrapper').fadeOut();
+  $('.calendar').fadeOut();
 });
 
-$(document).on('click', '.date',  function (e) {
-  e.stopPropagation();
-  e.preventDefault();
-  //$('.wrapper').fadeOut();
-  $(this).siblings('.wrapper').fadeToggle().css('display','inline-block');
-});
+
 
 
 

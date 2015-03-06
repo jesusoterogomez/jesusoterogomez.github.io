@@ -5,11 +5,12 @@ $hoverColor:#D1BDD8;
 ::-webkit-scrollbar { 
   display: none; 
 }
-.date{
+.datepicker{
   padding:10px 15px;
   border-radius:4px;
   outline:0;
   border:1px solid #ccc;
+  cursor: pointer;
 }
 .month{
   height:$cellSize;
@@ -32,26 +33,8 @@ $hoverColor:#D1BDD8;
   font-family:sans-serif;
   font-weight:700;
 }
-.days{
-  position: relative;
-  text-align: left;
-}
-.days a{
-  position:relative;
-  display:inline-block;
-  box-sizing:border-box;
-  border-right:1px solid #ddd;
-  border-bottom:1px solid #ddd;
-  text-align: center;
-  height:$cellSize;
-  width: $cellSize;
-  line-height: $cellSize;
-  color:#444;
-}
-.days a:hover{
-  background:$hoverColor;
-  cursor:pointer;
-}
+
+
 .monthlabel{
   color:#FFF;
   display:block;
@@ -94,19 +77,15 @@ $hoverColor:#D1BDD8;
   border-right:none;
 }
 
-.days a.disabled{
-  color:rgba(0,0,0,0.2);
-  pointer-events:none;
-}
-.days a.today{
-  background:$highlightColor;
-  color:#FFF;
-}
+
 .cal{
   box-shadow:0px 0px 1px 1px #eee;
 }
-
-.wrapper{
+.calendarWrapper{
+  position: relative;
+  display: inline-block;
+}
+.calendar{
   padding:15px;
   border-radius: 4px;
   background:#FFF;
@@ -114,16 +93,53 @@ $hoverColor:#D1BDD8;
   box-sizing:border-box;
   box-shadow:0px 0px 5px #333;
   position:absolute;
-  margin:5px;
-  margin-top: -50px;
-}
-.days a:nth-child(7n){
-  border-right:none;
-}
-.days{
-  position:relative;
-  height: $cellSize * 6;
-  overflow:scroll;
+  top: -40px;
+  left: 90%;
+  &:before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: -15px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 15px 10px 0;
+    border-color: transparent #FFF transparent transparent;
+  }
+  .days{
+    position:relative;
+    height: $cellSize * 6;
+    overflow:scroll;
+    text-align: left;
+    a{
+      position:relative;
+      display:inline-block;
+      box-sizing:border-box;
+      border-right:1px solid #ddd;
+      border-bottom:1px solid #ddd;
+      text-align: center;
+      height:$cellSize;
+      width: $cellSize;
+      line-height: $cellSize;
+      color:#444;
+      &.disabled{
+        color:rgba(0,0,0,0.2);
+        pointer-events:none;
+      }
+      &.today{
+        background:$highlightColor;
+        color:#FFF;
+      }
+      &:hover{
+        background:$hoverColor;
+        cursor:pointer;
+      }
+      &:nth-child(7n){
+        border-right:none;
+      }
+    }
+  }
 
 }
 
@@ -133,61 +149,97 @@ $hoverColor:#D1BDD8;
 //SITE 
 $contentWidth: 60%;
 body{
+  a{
+    text-decoration: none;
+  }
   background:$highlightColor;
   text-align: center;
   padding-top: 0px;
   color:#FFF;
   font:10pt 'Lato', sans-serif;
-}
-.intro{
-  font-size: 12pt;
-  color:#FFF;
-  width:$contentWidth;
-  margin: 0 auto;
-  padding:20px;
-  h1{
-    padding:20px;
-    font-size: 2em;
-  }
-  h2{
-    padding:10px;
-  }
-}
-.assessment{
-  border-top:1px solid rgba(255,255,255,0.1);
-  border-bottom:1px solid rgba(255,255,255,0.1);
+  .intro{
+    font-size: 12pt;
+    color:#FFF;
     width:$contentWidth;
-  margin: 0px auto;
-  padding:20px 0;
-}
-.outro{
-  font-size: 12pt;
-  color:#FFF;
-  width:$contentWidth;
-  margin: 0 auto;
-  padding:20px;
-  padding-bottom: 80px;
-  h1{
+    margin: 0 auto;
     padding:20px;
-    font-size: 2em;
+    h1{
+      padding:20px;
+      font-size: 2em;
+    }
+    h2{
+      padding:10px;
+    }
   }
-  h2{
-    padding:10px;
+  .assessment{
+    border-top:1px solid rgba(255,255,255,0.1);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    width:$contentWidth;
+    margin: 0px auto;
+    padding:20px 0;
+  }
+  .outro{
+    font-size: 12pt;
+    color:#FFF;
+    width:$contentWidth;
+    margin: 0 auto;
+    padding:20px;
+    padding-bottom: 80px;
+    h1{
+      padding:20px;
+      font-size: 2em;
+    }
+    h2{
+      padding:10px;
+    }
+  }
+  label{
+    color:#FFF;
+    display: block;
+    font-size: 12pt;
+    padding: 20px 0;
+    padding-bottom: 5px;
+  }
+  .datepicker{
+    color:#FFF;
+    border:3px solid #FFF;
+    background: transparent;
+    font:10pt 'Lato', sans-serif;
+    text-transform: uppercase;
+    width: 200px;
+  }
+  
+  .codepen{
+    background: #fff;
+    border-radius:2px;
+    padding:2px 6px;
+    img{
+      height:10pt;
+    }
+    &:hover{
+      background: #3862d7;
+      img{
+        filter: invert(100%);
+      }
+    }
+  }
+  .github{
+    background: #fff;
+    border-radius:2px;
+    padding:2px 6px;
+    color:#000;
+    img{
+      height:11pt;
+    }
+    &:hover{
+      color:#FFF;
+      background: #3862d7;
+      img{
+        filter: invert(100%);
+      }
+    }
   }
 }
 
-label{
-  color:#FFF;
-  display: block;
-  font-size: 12pt;
-  padding: 20px 0;
-  padding-bottom: 5px;
-}
-.date{
-  color:#FFF;
-  border:3px solid #FFF;
-  background: transparent;
-  font:10pt 'Lato', sans-serif;
-  text-transform: uppercase;
-  width: 200px;
-}
+
+
