@@ -1,134 +1,171 @@
+//////////////////////
+// Global Variables //
+//////////////////////
 
 var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-var initdate = new Date();
-
-initCalendar({
-  id:'date1'
-});
-
-// initCalendar({
-//   id:'date2'
-// });
+var dayNames = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
 
-$(document).on('click', '.datepicker',  function (e) {
-  $(this).blur();
-  e.stopPropagation();
-  e.preventDefault();
-  $(this).siblings('.calendar').fadeToggle();
+//Defaults 
+var holidays = [];
 
-});
+var options = {
+  id:'date1',
+  // startDate:'03-05-2015',
+  daysAhead:180,
+  holidays:holidays,
+  previousWeeks:2,
+  startDay:1
+};
+
+initCalendar(options);
+
 
 function initCalendar (options) {
 
-  $('.datepicker').wrap('<div class="calendarWrapper">');
+  var initDate = options.startDate === undefined ? new Date() : new Date(options.startDate);
+  initDate.setHours(0);
+  initDate.setMinutes(0);
+  initDate.setSeconds(0);
+  initDate.setMilliseconds(0);
+  options.initDate = initDate; //save initDate to object
+  
+  //Add JQuery Selector for current datepicker.
+  options.datepickerSelector = $('.datepicker#'+options.id);
+
+  //Wrap around a parent element for calendar positioning.
+  $('.datepicker#'+options.id).wrap('<div class="calendarWrapper">');
 
   var template = '<div class="calendar">'+
-    '<div class="cal">'+
-      '<div class="month"></div>'+
-      '<div class="labels"></div>'+
+    '<div class="grid">'+
+      '<div class="header"></div>'+
+      '<div class="weekdays"></div>'+
       '<div class="days"></div>'+
     '</div>'+
   '</div>';
-  
-  $('.datepicker').after(template);
 
-  var d = initdate.getFullYear();
-  var m = initdate.getMonth();
-  $('.calendar').find('.month').html( monthNames[m]+' '+d );
-  
-  $('.days').on('scroll', function () {
-    var lbls = $(this).find('.monthlabel').parent();
-    var pM = $(this).siblings('.month');
-    $.each(lbls, function( index, data ) {
-      var top = $(data).position().top;
-      var targetOffset = $(data).height()*weeksBehind;
+  //Add Calendar as a sibling of datepicker.
+  $(options.datepickerSelector).after(template);
 
-      if(top <= targetOffset ){
-                var y = new Date( $(data).last().data('date') );
-                var m = $(data).last().data('month');
-                $(pM).html(m+' '+y.getFullYear());
-      }
+  //Add JQuery Selector for current calendar.
+  options.calendarSelector = $(options.datepickerSelector).siblings('.calendar');
+
+  $(options.calendarSelector).find('.header').html(monthNames[initDate.getMonth()]+' '+initDate.getFullYear() );
+
+  //Rotate days according to starting day of the week
+  for (var i = 0; i < options.startDay ; i++) {
+    dayNames.push(dayNames.shift());
+  }
+
+  //set weekday labels;
+  $.each(dayNames, function( index, data ) {
+   $(options.calendarSelector).find('.weekdays').append('<a>'+data+'</a>');
+  });
+
+  //Fill Calendar Days 
+  fillCalendar(options);
+
+}; //initCalendar
+
+
+function fillCalendar(options){
+
+  var calendar = [];
+
+  for (var i = 0; i < options.daysAhead ; i++) {
+    var date = new Date(options.initDate);
+    var tempDate = new Date(date.setDate(date.getDate() + i));
+    var enabled = tempDate.getDay() == 0 || tempDate.getDay() == 6 ? 'disabled' : 'enabled';
+
+    //Starting on current day, push all the
+    calendar.push({
+      day: tempDate.getDate(),
+      date:tempDate,
+      weekday:tempDate.getDay(),
+      enabled: enabled,
+      dayName:dayNames[tempDate.getDay()]
     });
-  });
 
-}
+  };
 
+  //Complete days of the initial week missing + weeks to show before current date.
+  var offset = options.initDate.getDay();
+  for (var i = options.startDay; i < offset + options.previousWeeks*7 ; i++) {
+    var tDate = new Date(options.initDate);
+    var tempDate = new Date(tDate.setDate(tDate.getDate() - i - 1 + options.startDay));
 
+    calendar.unshift({
+      day:tempDate.getDate(),
+      date:tempDate,
+      weekday:tempDate.getDay(),
+      enabled: 'disabled',
+      dayName:dayNames[tempDate.getDay()]
+    });
+  }
 
+  renderCalendar(calendar, options);
 
-initdate.setHours(0);
-initdate.setMinutes(0);
-initdate.setSeconds(0);
-initdate.setMilliseconds(0);
-var daysAhead = 180;
-var holidays = [];
-var calendar = [];
-var today = new Date(initdate);
-today.setHours(0);
-today.setMinutes(0);
-today.setSeconds(0);
-today.setMilliseconds(0);
-weeksBehind = 2;
-var startDay = 1;
-
-var dayNames = [
-'Su',
-'Mo',
-'Tu',
-'We',
-'Th',
-'Fr',
-'Sa',
-];
-
-for (var i = 0; i < startDay ; i++) {
-  dayNames.push(dayNames.shift());
-}
-
-//set day labels;
-$.each(dayNames, function( index, data ) {
- $('.cal .labels').append('<a>'+data+'</a>');
-});
+}; //fillCalendar
 
 
-for (var i = 0; i < daysAhead ; i++) {
+//Render Calendar Content inside Grid
+function renderCalendar(calendar, options){
+  $.each(calendar, function( index, data ) {
+   var isToday = options.initDate.getTime() == data.date.getTime() ? 'today' : "";
 
-  var date = new Date(initdate);
-  var tempDate = new Date(date.setDate(date.getDate() + i));
-  var enabled = tempDate.getDay() == 0 || tempDate.getDay() == 6 ? 'disabled' : 'enabled';
-  
-  
-  calendar.push({
-    day: tempDate.getDate(),
-    date:tempDate,
-    weekday:tempDate.getDay(),
-    enabled: enabled,
-    dayName:dayNames[tempDate.getDay()]
-  });
-  
-};
-var offset = today.getDay();
+   if(data.day != 1){
+     $(options.calendarSelector).find('.days').append('<a data-date="'+data.date+'" class="'+data.enabled+' '+isToday+'">'+data.day+'</a>');
+   }
+   else{
+     $(options.calendarSelector).find('.days').append('<a data-date="'+data.date+'"  data-month="'+monthNames[data.date.getMonth().toString()]+'" class="'+data.enabled+' '+isToday+'"><span class="monthlabel"><span>'+monthNames[data.date.getMonth().toString()].substring(0,3)+'</span></span>'+data.day+'</a>');
+   }
+ });
+}; //renderCalendar
 
 
-for (var i = startDay; i < offset + weeksBehind*7 ; i++) {
-  var tDate = new Date(initdate);
-  var tempDate = new Date(tDate.setDate(tDate.getDate() - i - 1 + startDay));
-  
-  calendar.unshift({
-    day:tempDate.getDate(),
-    date:tempDate,
-    weekday:tempDate.getDay(),
-    enabled: 'disabled',
-    dayName:dayNames[tempDate.getDay()]
-  });
-}
+/////////////////////
+// Event Listeners //
+/////////////////////
 
+//Click outside of datepicker to hide
 $(document).on('click', function (e){
   $('.calendar').fadeOut();
 });
 
+// Open Calendar on Datepicker Click.
+$(document).on('click', '.datepicker',  function (e) {
+  e.stopPropagation();
+  e.preventDefault();
+  $(this).blur(); 
+  $(this).siblings('.calendar').fadeToggle(); 
+  //A Second click on the datepicker dismisses the calendar
+});
+
+//Prevent bubbling of events on click inside calendar
+$(document).on('click', '.calendar', function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+});
+
+//Update Month/Years Header on Scroll.
+$('.days').on('scroll', function () {
+  var months = $(this).find('.monthlabel').parent();
+  var header = $(this).siblings('.header');
+  $.each(months, function( index, cell ) {
+    var top = $(cell).position().top;
+    var targetOffset = $(cell).height(); 
+
+    /* Update header on first of the month reaching 
+    1 cell's height from the top of the grid. */
+    if(top <= targetOffset ){
+      var y = new Date( $(cell).last().data('date') );
+      var m = $(cell).last().data('month');
+      $(header).html(m+' '+y.getFullYear());
+    }
+  });
+});
+
+//Update Datepicker on Selection
 $(document).on('click', '.days a',  function (e) {  
   e.preventDefault();
   $(this).siblings().removeClass('today');
@@ -141,8 +178,7 @@ $(document).on('click', '.days a',  function (e) {
   }
   $(this).parents('.calendar').siblings('.datepicker').val( result.day+'-'+result.month+'-'+result.year);
 
-  // $('.datepicker').val( );
-  //$('.result').append(selectedDate);
+  //Hide calendar after selection
   $('.calendar').fadeOut();
 });
 
@@ -150,14 +186,3 @@ $(document).on('click', '.days a',  function (e) {
 
 
 
-$.each(calendar, function( index, data ) {
- var isToday = today.getTime() == data.date.getTime() ? 'today' : "";
-
- if(data.day != 1){
-   $('.cal .days').append('<a data-date="'+data.date+'" class="'+data.enabled+' '+isToday+'">'+data.day+'</a>');
- }
- else{
-   $('.cal .days').append('<a data-date="'+data.date+'"  data-month="'+monthNames[data.date.getMonth().toString()]+'" class="'+data.enabled+' '+isToday+'"><span class="monthlabel"><span>'+monthNames[data.date.getMonth().toString()].substring(0,3)+'</span></span>'+data.day+'</a>');
- }
-
-});

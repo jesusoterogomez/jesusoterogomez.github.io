@@ -8,18 +8,7 @@
   border: 1px solid #ccc;
   cursor: pointer; }
 
-.month {
-  height: 34px;
-  line-height: 34px;
-  margin: 0 auto;
-  text-align: center;
-  color: #222;
-  /*Subtle Border Washout Effect on Weekday Labels*/
-  box-shadow: 0px 15px 15px #FFF;
-  position: relative;
-  z-index: 100; }
-
-.cal {
+.grid {
   width: auto;
   box-sizing: border-box;
   width: 238px;
@@ -38,7 +27,6 @@
   padding: 0 1px;
   margin: 0;
   background: #666;
-  /* opacity:0.3; */
   font-size: 6pt;
   text-transform: uppercase;
   line-height: 8px; }
@@ -51,7 +39,7 @@
   top: 6px;
   font-weight: 700; }
 
-.labels a {
+.weekdays a {
   height: 34px;
   line-height: 34px;
   border-right: 1px solid #ddd;
@@ -65,7 +53,7 @@
   background: #FFF;
   color: #222; }
 
-.labels a:last-child {
+.weekdays a:last-child {
   border-right: none; }
 
 .cal {
@@ -96,6 +84,15 @@
     border-style: solid;
     border-width: 10px 15px 10px 0;
     border-color: transparent #FFF transparent transparent; }
+  .calendar .header {
+    height: 34px;
+    line-height: 34px;
+    margin: 0 auto;
+    text-align: center;
+    color: #222;
+    box-shadow: 0px 15px 15px #FFF;
+    position: relative;
+    z-index: 100; }
   .calendar .days {
     position: relative;
     height: 204px;

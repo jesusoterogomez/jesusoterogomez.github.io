@@ -12,18 +12,8 @@ $hoverColor:#D1BDD8;
   border:1px solid #ccc;
   cursor: pointer;
 }
-.month{
-  height:$cellSize;
-  line-height:$cellSize;
-  margin:0 auto;
-  text-align:center;
-  color:#222;
-  /*Subtle Border Washout Effect on Weekday Labels*/
-  box-shadow:0px 15px 15px #FFF; 
-  position:relative;
-  z-index:100;
-}
-.cal{
+
+.grid{
   width:auto;
   box-sizing:border-box;
   width: $cellSize * 7;
@@ -44,9 +34,7 @@ $hoverColor:#D1BDD8;
   padding:0 1px;
   margin: 0;
   background:#666;
-  /* opacity:0.3; */
   font-size: 6pt;
-
   text-transform: uppercase;
   line-height:8px;
 }
@@ -58,7 +46,7 @@ $hoverColor:#D1BDD8;
   top:6px;
   font-weight: 700;
 }
-.labels a{
+.weekdays a{
   height: $cellSize;
   line-height: $cellSize;
   border-right:1px solid #ddd;
@@ -73,7 +61,7 @@ $hoverColor:#D1BDD8;
   color:#222;
   
 }
-.labels a:last-child{
+.weekdays a:last-child{
   border-right:none;
 }
 
@@ -106,6 +94,17 @@ $hoverColor:#D1BDD8;
     border-style: solid;
     border-width: 10px 15px 10px 0;
     border-color: transparent #FFF transparent transparent;
+  }
+  .header{
+    height:$cellSize;
+    line-height:$cellSize;
+    margin:0 auto;
+    text-align:center;
+    color:#222;
+    // Subtle Border Washout Effect on Weekday Labels
+    box-shadow:0px 15px 15px #FFF; 
+    position:relative;
+    z-index:100;
   }
   .days{
     position:relative;
