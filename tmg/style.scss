@@ -12,63 +12,6 @@ $hoverColor:#D1BDD8;
   border:1px solid #ccc;
   cursor: pointer;
 }
-
-.grid{
-  width:auto;
-  box-sizing:border-box;
-  width: $cellSize * 7;
-  height: $cellSize * 8;
-  background:#fff;
-  font-size:10.5pt;
-  font-family:sans-serif;
-  font-weight:700;
-}
-
-
-.monthlabel{
-  color:#FFF;
-  display:block;
-  position:absolute;
-  width: 8px;
-  height: 100%;
-  padding:0 1px;
-  margin: 0;
-  background:#666;
-  font-size: 6pt;
-  text-transform: uppercase;
-  line-height:8px;
-}
-.monthlabel span{
-  position:relative;
-  word-wrap:break-word;
-  height:$cellSize;
-  position:relative;
-  top:6px;
-  font-weight: 700;
-}
-.weekdays a{
-  height: $cellSize;
-  line-height: $cellSize;
-  border-right:1px solid #ddd;
-  box-shadow:0px -15px 15px -10px rgba(0,0,0,0.1) inset;
-  box-sizing:border-box;
-  position:relative;
-  display:inline-block;
-  /* width:(100%/7); */
-  width: $cellSize;
-  text-align: center;
-  background:#FFF;
-  color:#222;
-  
-}
-.weekdays a:last-child{
-  border-right:none;
-}
-
-
-.cal{
-  box-shadow:0px 0px 1px 1px #eee;
-}
 .calendarWrapper{
   position: relative;
   display: inline-block;
@@ -95,57 +38,110 @@ $hoverColor:#D1BDD8;
     border-width: 10px 15px 10px 0;
     border-color: transparent #FFF transparent transparent;
   }
-  .header{
-    height:$cellSize;
-    line-height:$cellSize;
-    margin:0 auto;
-    text-align:center;
-    color:#222;
-    // Subtle Border Washout Effect on Weekday Labels
-    box-shadow:0px 15px 15px #FFF; 
-    position:relative;
-    z-index:100;
-  }
-  .days{
-    position:relative;
-    height: $cellSize * 6;
-    overflow:scroll;
-    text-align: left;
-    a{
+
+  .grid{
+    width:auto;
+    box-sizing:border-box;
+    width: $cellSize * 7;
+    height: $cellSize * 8;
+    background:#fff;
+    font-size:10.5pt;
+    font-family:sans-serif;
+    font-weight:700;
+    box-shadow:0px 0px 1px 1px #eee;
+    .header{
+      height:$cellSize;
+      line-height:$cellSize;
+      margin:0 auto;
+      text-align:center;
+      color:#222;
+      // Subtle Border Washout Effect on Weekday Labels
+      box-shadow:0px 15px 15px #FFF; 
+      position:relative;
+      z-index:100;
+    }
+    .weekdays a{
+      height: $cellSize;
+      line-height: $cellSize;
+      border-right:1px solid #ddd;
+      box-shadow:0px -15px 15px -10px rgba(0,0,0,0.1) inset;
+      box-sizing:border-box;
       position:relative;
       display:inline-block;
-      box-sizing:border-box;
-      border-right:1px solid #ddd;
-      border-bottom:1px solid #ddd;
-      text-align: center;
-      height:$cellSize;
       width: $cellSize;
-      line-height: $cellSize;
-      color:#444;
-      &.disabled{
-        color:rgba(0,0,0,0.2);
-        pointer-events:none;
-      }
-      &.today{
-        background:$highlightColor;
-        color:#FFF;
-      }
-      &:hover{
-        background:$hoverColor;
-        cursor:pointer;
-      }
-      &:nth-child(7n){
+      text-align: center;
+      background:#FFF;
+      color:#222;
+      &:last-child{
         border-right:none;
       }
     }
+    .days{
+      position:relative;
+      height: $cellSize * 6;
+      overflow:scroll;
+      text-align: left;
+      a{
+        position:relative;
+        display:inline-block;
+        box-sizing:border-box;
+        border-right:1px solid #ddd;
+        border-bottom:1px solid #ddd;
+        text-align: center;
+        height:$cellSize;
+        width: $cellSize;
+        line-height: $cellSize;
+        color:#444;
+        &.disabled{
+          color:rgba(0,0,0,0.2);
+          pointer-events:none;
+        }
+        &.selected{
+          background:$highlightColor;
+          color:#FFF;
+        }
+        &:hover{
+          background:$hoverColor;
+          cursor:pointer;
+        }
+        &:nth-child(7n){
+          border-right:none;
+        }
+      }
+      .monthLabel{
+        color:#FFF;
+        display:block;
+        position:absolute;
+        width: 8px;
+        height: 100%;
+        padding:0 1px;
+        margin: 0;
+        background:#666;
+        font-size: 6pt;
+        text-transform: uppercase;
+        line-height:8px;
+        span{
+          position:relative;
+          word-wrap:break-word;
+          height:$cellSize;
+          position:relative;
+          top:6px;
+          font-weight: 700;
+        }
+      }
+    }
+
   }
+
+
+
 
 }
 
 
 
 
-//SITE 
+// Assessment Site
 $contentWidth: 60%;
 body{
   a{

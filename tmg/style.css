@@ -8,57 +8,6 @@
   border: 1px solid #ccc;
   cursor: pointer; }
 
-.grid {
-  width: auto;
-  box-sizing: border-box;
-  width: 238px;
-  height: 272px;
-  background: #fff;
-  font-size: 10.5pt;
-  font-family: sans-serif;
-  font-weight: 700; }
-
-.monthlabel {
-  color: #FFF;
-  display: block;
-  position: absolute;
-  width: 8px;
-  height: 100%;
-  padding: 0 1px;
-  margin: 0;
-  background: #666;
-  font-size: 6pt;
-  text-transform: uppercase;
-  line-height: 8px; }
-
-.monthlabel span {
-  position: relative;
-  word-wrap: break-word;
-  height: 34px;
-  position: relative;
-  top: 6px;
-  font-weight: 700; }
-
-.weekdays a {
-  height: 34px;
-  line-height: 34px;
-  border-right: 1px solid #ddd;
-  box-shadow: 0px -15px 15px -10px rgba(0, 0, 0, 0.1) inset;
-  box-sizing: border-box;
-  position: relative;
-  display: inline-block;
-  /* width:(100%/7); */
-  width: 34px;
-  text-align: center;
-  background: #FFF;
-  color: #222; }
-
-.weekdays a:last-child {
-  border-right: none; }
-
-.cal {
-  box-shadow: 0px 0px 1px 1px #eee; }
-
 .calendarWrapper {
   position: relative;
   display: inline-block; }
@@ -84,42 +33,85 @@
     border-style: solid;
     border-width: 10px 15px 10px 0;
     border-color: transparent #FFF transparent transparent; }
-  .calendar .header {
-    height: 34px;
-    line-height: 34px;
-    margin: 0 auto;
-    text-align: center;
-    color: #222;
-    box-shadow: 0px 15px 15px #FFF;
-    position: relative;
-    z-index: 100; }
-  .calendar .days {
-    position: relative;
-    height: 204px;
-    overflow: scroll;
-    text-align: left; }
-    .calendar .days a {
+  .calendar .grid {
+    width: auto;
+    box-sizing: border-box;
+    width: 238px;
+    height: 272px;
+    background: #fff;
+    font-size: 10.5pt;
+    font-family: sans-serif;
+    font-weight: 700;
+    box-shadow: 0px 0px 1px 1px #eee; }
+    .calendar .grid .header {
+      height: 34px;
+      line-height: 34px;
+      margin: 0 auto;
+      text-align: center;
+      color: #222;
+      box-shadow: 0px 15px 15px #FFF;
+      position: relative;
+      z-index: 100; }
+    .calendar .grid .weekdays a {
+      height: 34px;
+      line-height: 34px;
+      border-right: 1px solid #ddd;
+      box-shadow: 0px -15px 15px -10px rgba(0, 0, 0, 0.1) inset;
+      box-sizing: border-box;
       position: relative;
       display: inline-block;
-      box-sizing: border-box;
-      border-right: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      text-align: center;
-      height: 34px;
       width: 34px;
-      line-height: 34px;
-      color: #444; }
-      .calendar .days a.disabled {
-        color: rgba(0, 0, 0, 0.2);
-        pointer-events: none; }
-      .calendar .days a.today {
-        background: #421E4E;
-        color: #FFF; }
-      .calendar .days a:hover {
-        background: #D1BDD8;
-        cursor: pointer; }
-      .calendar .days a:nth-child(7n) {
+      text-align: center;
+      background: #FFF;
+      color: #222; }
+      .calendar .grid .weekdays a:last-child {
         border-right: none; }
+    .calendar .grid .days {
+      position: relative;
+      height: 204px;
+      overflow: scroll;
+      text-align: left; }
+      .calendar .grid .days a {
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+        height: 34px;
+        width: 34px;
+        line-height: 34px;
+        color: #444; }
+        .calendar .grid .days a.disabled {
+          color: rgba(0, 0, 0, 0.2);
+          pointer-events: none; }
+        .calendar .grid .days a.selected {
+          background: #421E4E;
+          color: #FFF; }
+        .calendar .grid .days a:hover {
+          background: #D1BDD8;
+          cursor: pointer; }
+        .calendar .grid .days a:nth-child(7n) {
+          border-right: none; }
+      .calendar .grid .days .monthLabel {
+        color: #FFF;
+        display: block;
+        position: absolute;
+        width: 8px;
+        height: 100%;
+        padding: 0 1px;
+        margin: 0;
+        background: #666;
+        font-size: 6pt;
+        text-transform: uppercase;
+        line-height: 8px; }
+        .calendar .grid .days .monthLabel span {
+          position: relative;
+          word-wrap: break-word;
+          height: 34px;
+          position: relative;
+          top: 6px;
+          font-weight: 700; }
 
 body {
   background: #421E4E;
