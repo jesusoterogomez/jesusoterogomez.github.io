@@ -1,0 +1,84 @@
+{  
+   "data":[  
+      {  
+         "id":2260,
+         "type":"document",
+         "title":"Employment Contract",
+         "status":0,
+         "created":"1429620101",
+         "modified":"1429422001"
+      },
+      {  
+         "id":2261,
+         "type":"folder",
+         "title":"Annual Reports",
+         "status":0,
+         "created":"1429620001",
+         "modified":"1429420001"
+      },
+      {  
+         "id":2262,
+         "type":"document",
+         "title":"Company ABC",
+         "status":0,
+         "created":"1429620501",
+         "modified":"1429420301"
+      },
+      {  
+         "id":2263,
+         "type":"document",
+         "title":"Company B",
+         "status":0,
+         "created":"1429020001",
+         "modified":"1421420001"
+      },
+      {  
+         "id":2264,
+         "type":"document",
+         "title":"Company C",
+         "status":4,
+         "created":"1429023001",
+         "modified":"1429220001"
+      },
+      {  
+         "id":2265,
+         "type":"folder",
+         "title":"Documents",
+         "status":0,
+         "created":"1429620401",
+         "modified":"1429420021"
+      },
+      {  
+         "id":2266,
+         "type":"file",
+         "title":"Company X",
+         "status":5,
+         "created":"1429622001",
+         "modified":"1429429001"
+      },
+      {  
+         "id":2267,
+         "type":"file",
+         "title":"Company Y",
+         "status":4,
+         "created":"1429620501",
+         "modified":"1429426001"
+      },
+      {  
+         "id":2268,
+         "type":"file",
+         "title":"Company Z",
+         "status":1,
+         "created":"1429620001",
+         "modified":"1429420002"
+      },
+      {  
+         "id":2269,
+         "type":"casefile",
+         "title":"Aftale",
+         "status":3,
+         "created":"1429620001",
+         "modified":"1429423001"
+      }
+   ]
+}
