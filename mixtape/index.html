@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>A Little Mixtape</title>
+        <meta name="description" content="">
+      
+        <script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+        <link rel="shortcut icon" href="favicon.ico"/>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="plugin/css/style.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script type="text/javascript" src="plugin/jquery-jplayer/jquery.jplayer.js"></script>
+        <script type="text/javascript" src="plugin/ttw-music-player.js"></script>
+        <script type="text/javascript" src="js/myplaylist.js"></script>
+        <script type="text/javascript" src="js/jQueryRotate.2.2.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            var description = '';
+
+            $('#content').ttwMusicPlayer(myPlaylist, {
+                autoPlay:false, 
+                description:description,
+                jPlayer:{
+                    swfPath:'plugin/jquery-jplayer' //You need to override the default swf path any time the directory structure changes
+                }
+            });
+        });
+    </script>
+
+
+    </head>
+    
+    <body>
+        <div id="header">
+            <p><a href="http://jesusoterogomez.com">Go back to jesusoterogomez.com</a></p>
+            <img src="img/header.png">
+        </div>
+        <div id="content">
+        </div>
+        <div id="footer">
+            Credit to Saleem El-Amin for <a href="http://www.codebasehero.com/files/music-player/demo/</">this awesome Jquery Music Plugin</a>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="PPGJNHZ7M2M78">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+       </div>
+    </body>
+    <!-- SCRIPTS (After html for page speed)   <script src="js/jquery-1.10.1.min.js"/>  -->
+    
+</html>

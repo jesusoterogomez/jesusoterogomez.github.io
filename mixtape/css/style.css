@@ -1,0 +1,137 @@
+/* Transition Code
+	-webkit-transition: all 0.3s ease;                  
+    -moz-transition: all 0.3s ease;                 
+    -o-transition: all 0.3s ease;   
+    -ms-transition: all 0.3s ease;          
+    transition: all 0.3s ease;
+*/
+
+/* Background & Size Defaults */
+html{
+}
+
+html{
+	background: #252525;
+	background: url(../img/bg.png);
+}
+#header{
+	width: 425px;
+	margin: 60px auto;
+	margin-bottom:-65px;
+	overflow: hidden;
+}
+#header a{
+	position: absolute;
+	top:15px;
+	left:120px;
+	text-align: center;
+	color:#fff;
+	font-size: 10pt;
+	opacity: 0.5;
+	font-family: sans-serif;
+	text-decoration: none;
+}
+#header a:hover{
+	opacity: 1;
+}
+body{
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+#footer{
+	text-align: center;
+	color:#fff;
+	font-family: sans-serif;
+	font-size: 10pt;
+	margin-top:50px;
+}
+	
+#footer p{ opacity: 0.5;}
+#footer a{opacity: 0.5;
+	font-family: sans-serif;
+	color:#eee;
+
+}
+#footer a:hover{opacity: 1}
+.ttw-music-player{
+	position: relative;
+	background:url(../img/mixtape.png) no-repeat;
+	padding: 0;
+	height: auto;
+	width: 712px;
+	min-height: 700px;
+}
+.album-cover{
+
+	position: absolute;
+	top:158px;
+	left:70px;
+		width: 80px;
+	height: 80px;
+	border:2px solid #eee;
+	border-radius: 4px;
+}
+.ttw-music-player .album-cover, .ttw-music-player .album-cover .img, .ttw-music-player .album-cover .highlight {
+
+		width: 80px;
+	height: 80px;}
+
+.ttw-music-player .album-cover .img img{
+	width: 80px;
+	height: 80px;
+}
+
+.ttw-music-player .tracklist {
+	margin-top:380px;
+	margin-right: 100px;
+	margin-left:100px;
+}
+
+.ttw-music-player .track-info {
+	position: absolute;
+	top:45px;
+	left:120px;
+	width: 500px;
+	font-family: 'Permanent Marker', cursive;
+}
+
+.ttw-music-player .track-info .title{font-family: 'Permanent Marker', cursive; color:#000; font-size: 16pt; width: auto;}
+
+.ttw-music-player .track-info .artist-outer{font-size: 13pt;}
+
+.ttw-music-player .rating {
+	position: absolute;
+	top:10px;
+	right:20px;
+
+
+}
+.ttw-music-player .player-controls {
+	position: absolute;
+	top:76px;
+	right:70px;
+	background: none;
+
+
+}
+.ttw-music-player .circle1{
+	position: absolute;
+	z-index: -1;
+	top:152px;
+	left:164px;
+}
+.ttw-music-player .circle2{
+	position: absolute;
+	z-index: -1;
+	top:152px;
+	right:168px;
+}
+/* Mobile Layout: 480px and below. */
+
+/* Tablet Layout: 480px to a max of 768px*/
+@media only screen and (min-width: 480px) {
+
+
+/* Desktop Layout: 769px to a max of 1232px */
+@media only screen and (min-width: 769px) {
