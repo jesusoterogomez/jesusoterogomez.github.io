@@ -2875,7 +2875,7 @@ body {
   overflow-x: hidden;
   background: #2C3250;
   color: #FFF;
-  font-family: "Gotham Medium", helvetica, sans-serif;
+  font-family: "Gotham Medium", sans-serif;
   box-sizing: border-box;
   position: relative; }
 
@@ -2934,7 +2934,7 @@ h4 + p {
 
 p {
   margin: 1.5em 0;
-  font-family: GothamMedium;
+  font-family: "Gotham Medium", sans-serif;
   font-size: 18px;
   color: #FFFFFF;
   letter-spacing: 0.8px;
@@ -2942,7 +2942,7 @@ p {
 
 .content {
   box-sizing: border-box;
-  font-family: "Gotham Medium", helvetica, sans-serif;
+  font-family: "Gotham Medium", sans-serif;
   line-height: 120%;
   position: relative;
   width: 100%; }
