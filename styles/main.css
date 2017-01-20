@@ -3029,18 +3029,24 @@ th {
       padding: 0; }
       .projects .item-content .stack ul li {
         color: #FFFFFF;
-        font-size: 10pt;
+        font-size: 8pt;
         padding: 0.25em;
         border: 1px solid #FFFFFF;
         margin: 0 0.125em;
         display: inline-block; }
+        @media screen and (min-width: 480px) {
+          .projects .item-content .stack ul li {
+            font-size: 10pt; } }
     .projects .item-content .description {
       position: relative;
       z-index: 2;
-      font-size: 10pt;
+      font-size: 9.5pt;
       line-height: 18px;
       letter-spacing: 0.5px;
       padding: 0.5em; }
+      @media screen and (min-width: 480px) {
+        .projects .item-content .description {
+          font-size: 10pt; } }
     .projects .item-content .cta {
       position: absolute;
       z-index: 2;
@@ -3177,9 +3183,12 @@ a.link {
     pointer-events: none; }
 
 section {
-  padding: 1em 2em;
+  padding: 1em;
   margin: 0 auto;
   max-width: 580px; }
+  @media screen and (min-width: 480px) {
+    section {
+      padding: 1em 2em; } }
   section h4 {
     color: #6B6F84;
     text-transform: uppercase;
