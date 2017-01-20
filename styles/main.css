@@ -3183,12 +3183,9 @@ a.link {
     pointer-events: none; }
 
 section {
-  padding: 1em;
+  padding: 1em 2em;
   margin: 0 auto;
   max-width: 580px; }
-  @media screen and (min-width: 480px) {
-    section {
-      padding: 1em 2em; } }
   section h4 {
     color: #6B6F84;
     text-transform: uppercase;
