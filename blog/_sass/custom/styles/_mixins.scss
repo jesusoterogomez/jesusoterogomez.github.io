@@ -1,0 +1,50 @@
+@mixin transition($duration) {
+    transition: all $duration ease;
+}
+
+@mixin border($color) {
+    border: 1px solid $color;
+}
+
+@mixin gradient($from, $to, $start: #4072FF, $end: #A03F9D) {
+    $startColor: mix($start, $end, $to);
+    $endColor: mix($start, $end, $from);
+
+    background-image: -webkit-linear-gradient(right, $startColor 0%, $endColor 100%);
+    background-image: -o-linear-gradient(right, $startColor 0%, $endColor 100%);
+    background-image: linear-gradient(to left, $startColor 0%, $endColor 100%);
+}
+
+
+// @see: http://joshbroton.com/quick-fix-sass-mixins-for-css-keyframe-animations/ 
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}

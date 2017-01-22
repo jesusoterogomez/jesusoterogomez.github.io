@@ -1,0 +1,369 @@
+/**********************************************************
+
+    - main.scss
+
+    Point of entry for the SASS compiler. This file must
+    import all other files required in the application.
+
+    Partials are denoted with the _file.scss convention.
+
+    1. - Imports
+    2. - Default Styling
+
+**********************************************************/
+
+
+/** 1: Imports
+=========================================================*/
+$degrees: 4deg;
+
+@import "./fonts"; // Imports CSS Fonts, such as Google fonts
+@import "./normalize"; // Normalizes CSS for a Browser Compatible CSS Baseline
+@import "./mixins";
+@import "./animations";
+@import "./variables";
+@import "./components/all";
+
+/** 1: Default Styling
+=========================================================*/
+html {
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    text-select: none;
+    overflow-x: hidden;
+    width: 100%;
+    background: #2C3250;
+    color: #FFF;
+    font-family: $gotham-medium;
+    box-sizing: border-box;
+}
+
+// Override default styling for <a> tags
+a {
+    color: $color-white;
+    text-decoration: none;
+    user-select: none;
+}
+
+// Define custom link style with hover states.
+a.link {
+    color: $color-white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    margin: 0 2px; 
+    padding: 0 1px;
+    @include transition(0.2s);
+    user-select: none;
+
+    &:after {
+        @include transition(0.2s);
+        @include gradient(0%, 100%);
+        position: absolute;
+        left: -3px;
+        right: -3px;
+        top: -1px;
+        content: "";
+        display: block;
+        transform-origin: center bottom;
+        opacity: 1;
+        z-index: -1;
+        transform: scale(1, 0.15);
+        bottom: -2px;
+        @media screen and (min-width: 480px) {
+            bottom: 0;
+            opacity: 0.2;
+            transform: scale(1, 0.1);
+        }
+    }
+
+    &:before {
+        height: 2px;
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: -3px;
+        right: -3px;
+        display: block;
+        background: $color-white;
+        @include transition(0.5s);
+        z-index: 1;
+
+        opacity: 0;
+        @media screen and (min-width: 480px) {
+            opacity: 1;
+        }
+    }
+
+    &:hover {
+        &:before {
+            @include transition(0.2s);
+            opacity: 0;
+        }
+
+        &:after {
+            z-index: -1;
+            transform: scale(1, 1);
+            @include transition(0.2s);
+            opacity: 1;
+            transform-origin: center bottom;
+            pointer-events: none;
+        }
+    }
+}
+
+// Usually, global selectors such as these should not be used.
+// However, the current version of this website has a very simple and consistent html layout.
+// So, this will not cause unexpected side effects.
+section {
+    padding: $default-padding $default-padding*2;
+    margin: 0 auto;
+    max-width: 580px;
+    h4 {
+        color: #6B6F84;
+        text-transform: uppercase;
+        font-size: 10pt;
+        margin: 0;
+    }
+
+    h4 + p {
+        margin-top: $default-margin/2;
+    }
+
+    p {
+        margin: $default-margin*1.5 0;
+        font-family: $gotham-medium;
+        font-size: 18px;
+        color: #FFFFFF;
+        letter-spacing: 0.8px;
+        line-height: 28px;
+    }
+
+}
+
+.content {
+    box-sizing: border-box;
+    font-family: $gotham-medium;
+    line-height: 120%;
+    position: relative;
+    width: 100%;
+}
+
+
+.crossing-lines {
+    position: relative;
+    padding: $default-padding*4;
+    &:after {
+        position: absolute;
+        content: '';
+        display: block;
+        width: 150%;
+        left: -25%;
+        top: 40px;
+        height: 2px;
+        transform: rotate(-($degrees));
+        @include animation('intersection-inverse 55s -10s infinite alternate');
+        @include gradient(0%, 100%);
+    }
+
+    &:before {
+        position: absolute;
+        content: '';
+        display: block;
+        width: 150%;
+        left: -25%;
+        transform: rotate($degrees);
+        @include animation('intersection 50s infinite alternate');
+        @include gradient(0%, 100%);
+        height: 2px;
+    }
+
+    &.variation {
+        &:after {
+            top: 60px;
+            @include animation('intersection-inverse 55s -12s infinite alternate');
+        }
+        &:before {
+            @include animation('intersection 45s infinite alternate');
+        }
+    }
+}
+
+.single-line {
+    position: relative;
+    padding: $default-padding*4;
+    &:before {
+        @include gradient(0%, 100%);
+        @include animation('intersection 25s infinite alternate');
+        position: absolute;
+        content: '';
+        display: block;
+        width: 150%;
+        left: -25%;
+        height: 2px;
+        transform: rotate($degrees);
+    }
+}
+
+.slanted-header {
+    svg {
+        display: none;
+        position: absolute;
+        right: 0.4em;
+        top: 0.4em;
+        opacity: 0.8;
+        transform: scale(0.7);
+    }
+    position: relative;
+    height: 60px;
+    &:after {
+        @include gradient(0%, 100%);
+        content: '';
+        position: absolute;
+        display: block;
+        bottom: 0;
+        height: 500%;
+        left: -10%;
+        right: -10%;
+        transform: rotate($degrees);
+        z-index: -1;
+    }
+}
+
+.follow {
+    margin-top: $default-margin*3;
+}
+
+.social {
+    padding: 0;
+    padding-bottom: $default-padding*2;
+    margin: 0;
+    li {
+        letter-spacing: 0.8px;
+        line-height: 26px;    
+        margin: $default-margin/2 0;    
+    }
+}
+
+// Color overrides for link hover styles.
+.link {
+    &.facebook {
+        &:after {
+            background: #3b5998;
+        }
+    }
+
+    &.twitter {
+        &:after {
+            background: #55acee;
+        }
+    }
+
+    &.linkedin {
+        &:after {
+            background: #007bb5;
+        }
+    }
+
+    &.spotify {
+        &:after {
+            background: #00e461;
+        }
+    }
+
+    &.lastfm {
+        &:after {
+            background: #B90000;
+        }
+    }
+
+    &.github {
+        &:after {
+            background: #000;
+        }
+    }
+
+    &.stackoverflow {
+        &:after {
+            background: #F48024;
+        }
+    }
+
+    &.penneo {
+        i {
+            font-size: 0.9em;
+            position: relative;
+            left: 1px;
+            top: 2px;
+        }
+        &:after {
+            background: #34D298;
+        }
+    }
+    
+    &.mail {
+        &:after {
+            transform: scale(1, 1);
+            bottom: 0;
+
+            // Automatically show the hover state for mobile, to highlight CTA.
+            @media screen and (min-width: 480px) {
+                bottom: 0;
+                opacity: 0.2;
+                transform: scale(1, 0.1);
+            }
+        }
+    }
+}
+
+// This disables <br> tag in mobile devices.
+.wrap-mobile {
+    display: block;
+    @media screen and (min-width: 480px) {
+        display: none;
+    }
+}
+
+// Fixes positioning when auto text is not displayed & adds underline to written text.
+.replace {
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+
+    &:before {
+        vertical-align: bottom;
+        height: 2px;
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: -3px;
+        right: -3px;
+        display: block;
+        background: $color-white;
+        @include transition(0.5s);
+        opacity: 1;
+        z-index: 1;
+    }
+}
+
+// Vendor: ityped. Used to display a pulsing caret for the self appearing text.
+.ityped-cursor {
+    position: relative;
+    top: 6px;
+    left: 2px;
+    font-size: 1.5em;
+    opacity: 1;
+    @include animation('blink 0.45s infinite alternate');
+}
+
+
+.footer {
+    @include gradient(0%, 100%);
+    width: 100%;
+    height: 10px;
+}

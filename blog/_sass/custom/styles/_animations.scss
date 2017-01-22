@@ -1,0 +1,27 @@
+@include keyframes(intersection) {
+  0%   { transform: rotate($degrees) translateY(-20px) }
+  50%  { transform: rotate($degrees) translateY(20px)}
+  100% { transform: rotate($degrees) translateY(-20px)}
+}
+
+@include keyframes(intersection-inverse) {
+  0%   { transform: rotate(-($degrees)) translateY(30px) }
+  50%  { transform: rotate(-($degrees)) translateY(-30px)}
+  100% { transform: rotate(-($degrees)) translateY(30px)}
+}
+
+@include keyframes(blink) {
+  100% {opacity: 0}
+}
+
+@include keyframes(project-item) {
+  0%   { transform: rotate($degrees) translateY(-70px) }
+  50%  { transform: rotate($degrees) translateY(40px)}
+  100% { transform: rotate($degrees) translateY(-50px)}
+}
+
+@include keyframes(project-item-inverse) {
+  0%   { transform: rotate(-($degrees)) translateY(80px) }
+  50%  { transform: rotate(-($degrees)) translateY(-50px)}
+  100% { transform: rotate(-($degrees)) translateY(20px)}
+}
